@@ -10,11 +10,32 @@ import random
 # containing the 'extract_detailed_product_info' function.
 from detailed_product_information import extract_detailed_product_info
 
-def append_record(record):
-    """Appends a single JSON record to the data file, followed by a new line."""
-    with open('data.json', 'a') as f:
-        json.dump(record, f)
-        f.write(os.linesep)
+def append_record(record, filename='data.json'):
+    """
+    Appends a dictionary to a list in a JSON file.
+    """
+    try:
+        # Try to open and read the file
+        with open(filename, 'r') as f:
+            # Load the existing data into a list
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        # If the file doesn't exist or is empty, start with an empty list
+        data = []
+
+    # Ensure the data is a list
+    if not isinstance(data, list):
+        print("Error: JSON file does not contain a list.")
+        return
+
+    # Append the new dictionary
+    data.append(record)
+
+    # Write the updated list back to the file
+    with open(filename, 'w') as f:
+        # Use indent for pretty-printing
+        json.dump(data, f, indent=4)
+
 
 def extract_product_data(html_filepath,pretty_filepath, class_list, url_tag, url_class,attr_url_dictionary,attributes_dictionary,product_brand_tag,product_brand_class,product_price_tag,product_price_class,product_sale_price_tag,product_sale_price_class,title_tag,title_class,product_image_tag,product_image_class,product_image_dict):
     """
