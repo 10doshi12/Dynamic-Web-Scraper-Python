@@ -1,8 +1,10 @@
 # Import necessary libraries for data parsing and file handling.
+from time import time
 from bs4 import BeautifulSoup # Used for parsing HTML and extracting data.
 from hashlib import sha256 # Used for creating a unique hash ID for products.
 import json # Used for saving the extracted data to a JSON file.
 import os # Used for interacting with the operating system, like writing new lines.
+import random
 
 # This script assumes a separate file named 'detailed_product_information.py' exists,
 # containing the 'extract_detailed_product_info' function.
@@ -50,7 +52,13 @@ def extract_product_data(html_filepath,pretty_filepath, class_list, url_tag, url
     for product_tag in product_listings:
         if count >= 5:
             break  # Limit to 5 products for testing purposes.
-        
+
+        #there are too many requests in a short time, so we add a delay
+        if count%10 == 0 and count != 0:
+            random_delay = random.uniform(5,12)  # Random delay between 5 to 12 seconds for more realistic behavior
+            print(f"Pausing for {random_delay:.2f} seconds to avoid overwhelming the server.")
+            time.sleep(random_delay)
+
         # Find individual data points (title, price, etc.) within each product tag.
         title_tag_element = product_tag.find(title_tag, class_=title_class)
         url_tag_element = product_tag.find(url_tag, class_=url_class, attrs = attr_url_dictionary)
