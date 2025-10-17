@@ -4,12 +4,12 @@ This project is a Python-based web scraper designed to dynamically navigate an e
 
 ## **Table of Contents**
 
-1. [Setup Instructions](https://www.google.com/search?q=%23setup-instructions)  
-2. [Project Structure](https://www.google.com/search?q=%23project-structure)  
-3. [How to Run](https://www.google.com/search?q=%23how-to-run)  
-4. [Configuration](https://www.google.com/search?q=%23configuration)  
-5. [Libraries Used](https://www.google.com/search?q=%23libraries-used)  
-6. [Disclaimer](https://www.google.com/search?q=%23disclaimer)
+1. [Setup Instructions]()  
+2. [Project Structure]()  
+3. [How to Run]()  
+4. [Configuration]()  
+5. [Libraries Used]()  
+6. [Disclaimer]()
 
 ### **Setup Instructions**
 
